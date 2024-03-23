@@ -1,5 +1,5 @@
 <template>
-  <input type="number" @input="changeAmount($event.target.value)" placeholder="Enter the number" />
+  <input min="0" type="number" @input="changeAmount($event.target.value)" placeholder="Enter the number" />
 </template>
 
 <script>

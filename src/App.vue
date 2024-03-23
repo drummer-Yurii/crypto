@@ -1,8 +1,6 @@
 <template>
   <h1>crypto</h1>
   <TheInput :changeAmount="changeAmount" />
-  {{ cryptoFirst }}
-  {{ cryptoSecond }}
   <div class="selectors">
     <TheSelector :setCrypto="setCryptoFirst" />
     <TheSelector :setCrypto="setCryptoSecond" />
