@@ -2,6 +2,7 @@
   <h1>crypto</h1>
   <TheInput :changeAmount="changeAmount" :convert="convert" />
   <p v-if="error != ''">{{ error }}</p>
+  <p v-if="result != 0" class="result-text">{{ result }}</p>
   <div class="selectors">
     <TheSelector :setCrypto="setCryptoFirst" />
     <TheSelector :setCrypto="setCryptoSecond" />
@@ -11,6 +12,9 @@
 <script>
 import TheInput from './components/TheInput.vue';
 import TheSelector from './components/TheSelector.vue';
+import CryptoConvert from 'crypto-convert';
+
+const convert = new CryptoConvert();
 export default {
   name: 'App',
   components: {
@@ -23,6 +27,7 @@ export default {
       cryptoFirst: '',
       cryptoSecond: '',
       error: '',
+      result: 0,
     };
   },
   methods: {
@@ -35,7 +40,7 @@ export default {
     setCryptoSecond(val) {
       this.cryptoSecond = val;
     },
-    convert() {
+    async convert() {
       if (this.amount <= 0) {
         this.error = 'Enter number more than zero';
         return;
@@ -48,6 +53,21 @@ export default {
       }
 
       this.error = '';
+      await convert.ready();
+
+      if (this.cryptoFirst == 'BTC' && this.cryptoSecond == 'ETH') {
+        this.result = convert.BTC.ETH(this.amount);
+      } else if (this.cryptoFirst == 'BTC' && this.cryptoSecond == 'USDT') {
+        this.result = convert.BTC.USDT(this.amount);
+      } else if (this.cryptoFirst == 'ETH' && this.cryptoSecond == 'BTC') {
+        this.result = convert.ETH.BTC(this.amount);
+      } else if (this.cryptoFirst == 'ETH' && this.cryptoSecond == 'USDT') {
+        this.result = convert.ETH.USDT(this.amount);
+      } else if (this.cryptoFirst == 'USDT' && this.cryptoSecond == 'BTC') {
+        this.result = convert.USDT.BTC(this.amount);
+      } else if (this.cryptoFirst == 'USDT' && this.cryptoSecond == 'ETH') {
+        this.result = convert.USDT.ETH(this.amount);
+      }
     },
   },
 };
