@@ -1,6 +1,7 @@
 <template>
   <h1>crypto</h1>
-  <TheInput :changeAmount="changeAmount" />
+  <TheInput :changeAmount="changeAmount" :convert="convert" />
+  <p v-if="error != ''">{{ error }}</p>
   <div class="selectors">
     <TheSelector :setCrypto="setCryptoFirst" />
     <TheSelector :setCrypto="setCryptoSecond" />
@@ -21,6 +22,7 @@ export default {
       amount: 0,
       cryptoFirst: '',
       cryptoSecond: '',
+      error: '',
     };
   },
   methods: {
@@ -32,6 +34,20 @@ export default {
     },
     setCryptoSecond(val) {
       this.cryptoSecond = val;
+    },
+    convert() {
+      if (this.amount <= 0) {
+        this.error = 'Enter number more than zero';
+        return;
+      } else if (this.cryptoFirst == '' || this.cryptoSecond == '') {
+        this.error = 'Choose currency first';
+        return;
+      } else if (this.cryptoFirst == this.cryptoSecond) {
+        this.error = 'Choose another currency';
+        return;
+      }
+
+      this.error = '';
     },
   },
 };
