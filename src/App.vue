@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-  </div>
+  <h1>crypto</h1>
 </template>
 
 <script>
