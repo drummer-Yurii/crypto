@@ -1,9 +1,11 @@
 <template>
   <h1>crypto</h1>
   <TheInput :changeAmount="changeAmount" />
+  {{ cryptoFirst }}
+  {{ cryptoSecond }}
   <div class="selectors">
-    <TheSelector />
-    <TheSelector />
+    <TheSelector :setCrypto="setCryptoFirst" />
+    <TheSelector :setCrypto="setCryptoSecond" />
   </div>
 </template>
 
@@ -19,11 +21,19 @@ export default {
   data() {
     return {
       amount: 0,
+      cryptoFirst: '',
+      cryptoSecond: '',
     };
   },
   methods: {
     changeAmount(val) {
       this.amount = val;
+    },
+    setCryptoFirst(val) {
+      this.cryptoFirst = val;
+    },
+    setCryptoSecond(val) {
+      this.cryptoSecond = val;
     },
   },
 };

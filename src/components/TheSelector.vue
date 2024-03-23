@@ -1,13 +1,20 @@
 <template>
   <ul>
-    <li>Bitcoin</li>
-    <li>ETH</li>
-    <li>USDT</li>
+    <li @click="setCrypto('BTC')">Bitcoin</li>
+    <li @click="setCrypto('ETH')">ETH</li>
+    <li @click="setCrypto('USDT')">USDT</li>
   </ul>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    setCrypto: {
+      type: Function,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
