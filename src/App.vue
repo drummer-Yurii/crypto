@@ -1,6 +1,6 @@
 <template>
   <h1>crypto</h1>
-  <TheInput />
+  <TheInput :changeAmount="changeAmount" />
   <div class="selectors">
     <TheSelector />
     <TheSelector />
@@ -15,6 +15,16 @@ export default {
   components: {
     TheInput,
     TheSelector,
+  },
+  data() {
+    return {
+      amount: 0,
+    };
+  },
+  methods: {
+    changeAmount(val) {
+      this.amount = val;
+    },
   },
 };
 </script>

@@ -1,10 +1,16 @@
 <template>
-  <input type="number" placeholder="Enter the number" />
+  <input type="number" @input="changeAmount($event.target.value)" placeholder="Enter the number" />
 </template>
 
 <script>
 export default {
   name: 'TheInput',
+  props: {
+    changeAmount: {
+      type: Function,
+      required: true,
+    },
+  },
 };
 </script>
 
