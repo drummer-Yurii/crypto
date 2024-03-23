@@ -1,13 +1,16 @@
 <template>
   <h1>crypto</h1>
+  <TheInput />
 </template>
 
 <script>
-  export default {
-    name: 'App',
-  }
+import TheInput from './components/TheInput.vue';
+export default {
+  name: 'App',
+  components: {
+    TheInput,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
