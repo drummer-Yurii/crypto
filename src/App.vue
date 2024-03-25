@@ -5,8 +5,8 @@
   <p v-if="result != 0" class="result-text">{{ result }}</p>
   <TheFavorite :favs="favs" v-if="favs.length > 0" :getFromFavs="getFromFavs" />
   <div class="selectors">
-    <TheSelector :setCrypto="setCryptoFirst" />
-    <TheSelector :setCrypto="setCryptoSecond" />
+    <TheSelector :setCrypto="setCryptoFirst" :cryptoNow="cryptoFirst" />
+    <TheSelector :setCrypto="setCryptoSecond" :cryptoNow="cryptoSecond" />
   </div>
 </template>
 
