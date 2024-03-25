@@ -1,6 +1,6 @@
 <template>
   <h1>crypto</h1>
-  <TheInput :changeAmount="changeAmount" :convert="convert" />
+  <TheInput :changeAmount="changeAmount" :convert="convert" :favorite="favorite" />
   <p v-if="error != ''">{{ error }}</p>
   <p v-if="result != 0" class="result-text">{{ result }}</p>
   <div class="selectors">
@@ -31,6 +31,7 @@ export default {
     };
   },
   methods: {
+    favorite() {},
     changeAmount(val) {
       this.amount = val;
     },

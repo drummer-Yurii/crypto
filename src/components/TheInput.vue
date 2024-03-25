@@ -7,6 +7,7 @@
   />
   <br />
   <button @click="convert()">Convert</button>
+  <button @click="favorite()" class="fav-button">Favorite</button>
 </template>
 
 <script>
@@ -18,6 +19,10 @@ export default {
       required: true,
     },
     convert: {
+      type: Function,
+      required: true,
+    },
+    favorite: {
       type: Function,
       required: true,
     },
