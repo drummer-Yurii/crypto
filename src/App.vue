@@ -3,7 +3,7 @@
   <TheInput :changeAmount="changeAmount" :convert="convert" :favorite="favorite" />
   <p v-if="error != ''">{{ error }}</p>
   <p v-if="result != 0" class="result-text">{{ result }}</p>
-  {{ favs }}
+  <TheFavorite :favs="favs" v-if="favs.length > 0" />
   <div class="selectors">
     <TheSelector :setCrypto="setCryptoFirst" />
     <TheSelector :setCrypto="setCryptoSecond" />
@@ -13,6 +13,7 @@
 <script>
 import TheInput from './components/TheInput.vue';
 import TheSelector from './components/TheSelector.vue';
+import TheFavorite from './components/TheFavorite.vue';
 import CryptoConvert from 'crypto-convert';
 
 const convert = new CryptoConvert();
@@ -21,6 +22,7 @@ export default {
   components: {
     TheInput,
     TheSelector,
+    TheFavorite,
   },
   data() {
     return {
