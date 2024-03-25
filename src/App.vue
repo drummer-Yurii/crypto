@@ -3,7 +3,7 @@
   <TheInput :changeAmount="changeAmount" :convert="convert" :favorite="favorite" />
   <p v-if="error != ''">{{ error }}</p>
   <p v-if="result != 0" class="result-text">{{ result }}</p>
-  <TheFavorite :favs="favs" v-if="favs.length > 0" />
+  <TheFavorite :favs="favs" v-if="favs.length > 0" :getFromFavs="getFromFavs" />
   <div class="selectors">
     <TheSelector :setCrypto="setCryptoFirst" />
     <TheSelector :setCrypto="setCryptoSecond" />
@@ -40,6 +40,10 @@ export default {
         from: this.cryptoFirst,
         to: this.cryptoSecond,
       });
+    },
+    getFromFavs(index) {
+      this.cryptoFirst = this.favs[index].from;
+      this.cryptoSecond = this.favs[index].to;
     },
     changeAmount(val) {
       this.amount = val;
